@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Register | BrightPath</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- External CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+
+    <style>
+        body {
+            background-color: #f8fdfc;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .green-bar {
+            background-color: #00B98E;
+            color: white;
+            padding: 12px 0; /* Adjust padding for equal height */
+            text-align: center;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .green-bar-text {
+            text-align: left;
+            flex-grow: 1;
+            margin-left: 20px; /* Add some left margin */
+        }
+        .auth-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-container img {
+            width: 100%; /* Make image span full width */
+            height: calc(100vh - 68px); /* Fit image between green bars with adjusted padding */
+            object-fit: cover; /* Ensure proper scaling */
+        }
+        .auth-box {
+            flex: 1;
+            max-width: 400px;
+            background: white;
+            border-radius: 10px;
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+            padding: 30px;
+            margin-right: 50px; /* Adds spacing between image and form */
+            margin-left: 50px; /* Add spacing to the left of the form */
+        }
+        .auth-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #00B98E; /* Matches top green bar */
+            color: white;
+            text-align: center;
+            padding: 12px 0; /* Adjust padding to match top bar */
+        }
+        footer p {
+            margin: 0; /* Remove default paragraph spacing */
+        }
+        @media (max-width: 768px) {
+          .auth-container {
+              flex-direction: column-reverse; /* Stack image and form on small screens */
+          }
+          .auth-box {
+              margin-right: 0; /* Remove spacing for smaller screens */
+              margin-left: 0; /* Remove spacing for smaller screens */
+              width: auto; /* Allow form to take full width */
+          }
+          .image-container img {
+              max-width: 100%; /* Ensure image fits smaller screens */
+          }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Green Bar -->
+    <div class="green-bar">
+        <div class="green-bar-text">BrightPath</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="auth-container">
+        <!-- Left Side Image -->
+        <div class="image-container">
+          <img src="img/carousel-1.jpg" alt="Auth Background">
+        </div>
+
+        <!-- Right Side Login/Register Form -->
+        <div class="auth-box">
+            <h2>Login</h2>
+
+            <form id="loginForm" novalidate>
+                <div class="mb-3">
+                    <label for="loginEmail" class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <input type="password" 
+                           id="loginPassword" 
+                           class="form-control" 
+                           placeholder="Enter your password" 
+                           required 
+                           autocomplete="current-password">
+                </div>
+
+                <button type="submit" id="loginBtn" class="btn btn-success w-100">Login</button>
+            </form>
+
+            <p class="text-center mt-3">Don't have an account? 
+                <a href="#" id="registerLink" class="text-primary">Register</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Bottom Green Bar -->
+    <footer>
+        <p>Copyright © 2025. All rights reserved.</p>
+    </footer>
+
+    <script src="js/auth.js"></script> <!-- Ensure this is correctly linked -->
+</body>
+</html>

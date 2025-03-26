@@ -1,0 +1,10 @@
+# Frontend-specific ignores
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn

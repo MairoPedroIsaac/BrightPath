@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | BrightPath</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">BrightPath Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Applications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Donations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="text-center py-5 bg-light">
+        <h2>Admin Dashboard</h2>
+        <p>Manage applications and donations.</p>
+    </header>
+    
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <img src="images/review.jpg" class="card-img-top" alt="Review Applications">
+                    <div class="card-body">
+                        <h5 class="card-title">Review Applications</h5>
+                        <p class="card-text">Approve or reject housing applications.</p>
+                        <a href="#" class="btn btn-primary">View Applications</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <img src="images/funds.jpg" class="card-img-top" alt="Manage Donations">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Donations</h5>
+                        <p class="card-text">Allocate and track donation funds.</p>
+                        <a href="#" class="btn btn-primary">View Donations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-primary text-white text-center py-3">
+        &copy; 2025 BrightPath. Admin Panel.
+    </footer>
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Dashboard logic to check for token
+        console.log('admin-dashboard.html loaded'); // Add this line
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                console.log('No token found. Redirecting to login.'); // Add this line
+                window.location.href = 'auth.html';
+            } else {
+                console.log('Token found:', token);
+                // Add further dashboard logic here, e.g., fetching user data
+                // Example: document.getElementById('someElement').textContent = 'Admin Panel';
+            }
+        });
+    </script>
+</body>
+</html>
