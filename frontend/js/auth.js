@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("auth.js loaded successfully!");
 
     const loginForm = document.getElementById("loginForm");
+    const errorMessage = document.createElement("p");
 
     if (loginForm) {
         loginForm.addEventListener("submit", async (e) => {
@@ -11,36 +12,54 @@ document.addEventListener("DOMContentLoaded", function () {
             const email = document.getElementById("loginEmail").value;
             const password = document.getElementById("loginPassword").value;
 
-            console.log("Email:", email, "Password:", password);
+            // Clear previous messages
+            errorMessage.textContent = "";
 
             if (!email || !password) {
-                alert("Please fill in all fields.");
+                errorMessage.textContent = "Please fill in all fields.";
+                errorMessage.style.color = "red";
+                loginForm.appendChild(errorMessage);
                 return;
             }
 
             try {
-                const response = await fetch("http://localhost:5000/auth/login", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email, password }),
-                });
+                const response = await fetch(
+                    "http://localhost:5000/auth/login",
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email, password }),
+                    }
+                );
 
                 const data = await response.json();
                 console.log("Server Response:", data);
 
                 if (response.ok) {
                     localStorage.setItem("token", data.token);
-                    // Remove alert and add immediate redirection
-                    window.location.href = data.roleId === 1 ? "dashboard.html" : "admin-dashboard.html";
+
+                    // Redirect based on role
+                    window.location.href =
+                        data.roleId === 1
+                            ? "dashboard.html"
+                            : "admin-dashboard.html";
                 } else {
-                    alert("Login Failed: " + (data.error || "Server error"));
+                    errorMessage.textContent =
+                        data.error || "Login failed. Invalid credentials.";
+                    errorMessage.style.color = "red";
+                    loginForm.appendChild(errorMessage);
                 }
             } catch (error) {
                 console.error("Login Error:", error);
-                alert("Server error. Please try again later.");
+                errorMessage.textContent =
+                    "Server error. Please try again later.";
+                errorMessage.style.color = "red";
+                loginForm.appendChild(errorMessage);
             }
         });
     } else {
-        console.log("Login form not found. Check your auth.html file.");
+        console.log(
+            "Login form not found. Check your auth.html file."
+        );
     }
 });
