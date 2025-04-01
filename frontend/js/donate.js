@@ -15,7 +15,7 @@ document.getElementById("donationForm").addEventListener("submit", async (e) => 
 
     try {
         const response = await axios.post(
-            "http://localhost:5000/donations",
+            "http://localhost:5000/user/donations",
             { donorName, email, amount, paymentMethod },
             { headers: { Authorization: `Bearer ${token}` } }
         );

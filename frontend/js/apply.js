@@ -14,17 +14,31 @@ document.getElementById("applyForm").addEventListener("submit", async (e) => {
     const reason = document.getElementById("reason").value;
 
     try {
-        const response = await axios.post(
-            "http://localhost:5000/housing/apply",
-            { fullName, email, phone, reason },
-            { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const response = await fetch("http://localhost:5000/housing", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({ fullName, email, phone, reason })
+        });
 
-        if (response.status === 200) {
+        console.log(response)
+
+        if (response.ok) {
             alert("Application submitted successfully!");
             window.location.href = "dashboard.html";
+        } else {
+            const data = await response.json();
+            alert("Application Failed: " + (data.error || "Server error"));
         }
     } catch (error) {
-        alert("Application Failed: " + (error.response?.data?.error || "Server error"));
+        alert("Application Failed: " + error.message);
     }
+});
+
+// Logout function
+document.getElementById("logout").addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.location.href = "auth.html";
 });

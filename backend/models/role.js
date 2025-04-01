@@ -1,13 +1,25 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
-const User = require("./user.js");
+const { Model, DataTypes } = require("sequelize");
 
-const Role = sequelize.define("Role", {
-    name: DataTypes.STRING,
-});
+module.exports = (sequelize) => {
+    class Role extends Model {
+        static associate(models) {
+            Role.hasMany(models.User, { foreignKey: "roleId", onDelete: "CASCADE" });
+        }
+    }
 
-Role.associate = (models) => {
-    Role.hasMany(User, { foreignKey: "roleId" });
+    Role.init(
+        {
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                unique: true,
+            },
+        },
+        {
+            sequelize,
+            modelName: "Role",
+        }
+    );
+
+    return Role;
 };
-
-module.exports = Role;

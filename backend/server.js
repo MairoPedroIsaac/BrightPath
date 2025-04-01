@@ -5,6 +5,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const userRoutes = require("./routes/userRoutes");
+const db = require("./models");
 
 dotenv.config();
 const app = express();
@@ -21,10 +22,18 @@ app.use("/admin", adminRoutes);
 app.use("/user", userRoutes);
 
 app.get("/", (req, res) => {
-  res.send("BrightPath API is running...");
+    res.send("BrightPath API is running...");
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// Database Synchronization
+db.sequelize
+    .sync() // Remove `force: true` to avoid dropping tables
+    .then(() => {
+        console.log("Database synced successfully!");
+        app.listen(PORT, () => {
+            console.log(`Server running on http://localhost:${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error("Error syncing database:", error);
+    });

@@ -1,16 +1,29 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
-const Application = require("./application.js");
+const { Model, DataTypes } = require("sequelize");
 
-const Housing = sequelize.define("Housing", {
-    name: DataTypes.STRING,
-    location: DataTypes.STRING,
-    capacity: DataTypes.INTEGER,
-    available: { type: DataTypes.BOOLEAN, defaultValue: true },
-});
+module.exports = (sequelize) => {
+    class Housing extends Model {
+        static associate(models) {
+            Housing.hasMany(models.HousingApplication, { foreignKey: "houseId", onDelete: "CASCADE" });
+        }
+    }
 
-Housing.associate = (models) => {
-    Housing.hasMany(Application, { foreignKey: "houseId" });
+    Housing.init(
+        {
+            id: {
+                type: DataTypes.UUID,
+                defaultValue: DataTypes.UUIDV4,
+                primaryKey: true,
+            },
+            name: { type: DataTypes.STRING, allowNull: false },
+            location: { type: DataTypes.STRING, allowNull: false },
+            capacity: { type: DataTypes.INTEGER, allowNull: false },
+            available: { type: DataTypes.BOOLEAN, defaultValue: true },
+        },
+        {
+            sequelize,
+            modelName: "Housing",
+        }
+    );
+
+    return Housing;
 };
-
-module.exports = Housing;

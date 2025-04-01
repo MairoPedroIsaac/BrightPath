@@ -1,42 +1,45 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
-const Role = require("./role.js");
+'use strict';
 
-const User = sequelize.define("User", {
-    id: {
+const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
+
+module.exports = (sequelize) => {
+  class User extends Model {
+    static associate(models) {
+      // Define associations here
+    }
+
+    // Method to compare passwords
+    validPassword(password) {
+      return bcrypt.compareSync(password, this.password_hash);
+    }
+  }
+
+  User.init(
+    {
+      id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
         primaryKey: true,
+      },
+      full_name: { type: DataTypes.STRING, allowNull: false },
+      email: { type: DataTypes.STRING, allowNull: false, unique: true },
+      password_hash: { type: DataTypes.STRING, allowNull: false },
+      roleId: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 2 }, // Default roleId for regular users
     },
-    full_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-            isEmail: true,
+    {
+      sequelize,
+      modelName: 'User',
+      hooks: {
+        beforeCreate: async (user) => {
+          if (user.password_hash) {
+            const salt = await bcrypt.genSalt(10);
+            user.password_hash = await bcrypt.hash(user.password_hash, salt);
+          }
         },
-    },
-    password_hash: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    roleId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 1,
-        references: {
-            model: "Roles", // Ensure this matches your actual table name
-            key: "id",
-        },
-    },
-});
+      },
+    }
+  );
 
-// Define relationship
-User.belongsTo(Role, { foreignKey: "roleId" });
-
-module.exports = User;
+  return User;
+};

@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Redirect based on role
                     window.location.href =
                         data.roleId === 1
-                            ? "dashboard.html"
-                            : "admin-dashboard.html";
+                            ? "admin-dashboard.html"
+                            : "dashboard.html";
                 } else {
                     errorMessage.textContent =
                         data.error || "Login failed. Invalid credentials.";

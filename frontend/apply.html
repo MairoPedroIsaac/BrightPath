@@ -19,7 +19,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="donate.html">Donate</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                    <!-- Updated the logout link with id="logout" -->
+                    <li class="nav-item"><a class="nav-link" href="#" id="logout">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -35,7 +36,8 @@
             <div class="col-md-6">
                 <div class="card shadow p-4">
                     <h4 class="text-center mb-4">Housing Application Form</h4>
-                    <form>
+                    <!-- Added id="applyForm" to the form tag -->
+                    <form id="applyForm">
                         <div class="mb-3">
                             <label for="fullName" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="fullName" required>
@@ -64,6 +66,7 @@
     </footer>
     
     <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Linking to the updated apply.js -->
     <script src="js/apply.js"></script>
 </body>
 </html>
