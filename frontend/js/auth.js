@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             try {
                 const response = await fetch(
-                    "http://localhost:5000/auth/login",
+                    "http://https://brightpath-zp6i.onrender.com/auth/login",
                     {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },

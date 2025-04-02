@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch applications
     async function fetchApplications() {
       try {
-        const response = await fetch('http://localhost:5000/applications');
+        const response = await fetch('http://https://brightpath-zp6i.onrender.com/applications');
         const applications = await response.json();
         
         applicationsTable.innerHTML = applications.map(app => `
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Status update function
     window.updateStatus = async function(id, status) {
       try {
-        const response = await fetch(`http://localhost:5000/applications/${id}`, {
+        const response = await fetch(`http://https://brightpath-zp6i.onrender.com/applications/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

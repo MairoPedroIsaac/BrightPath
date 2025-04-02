@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await axios.get("http://localhost:5000/auth/user", {
+        const response = await axios.get("http://https://brightpath-zp6i.onrender.com/auth/user", {
             headers: { Authorization: `Bearer ${token}` }
         });
 

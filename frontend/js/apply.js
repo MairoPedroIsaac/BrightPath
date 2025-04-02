@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/applications/apply', {
+            const response = await fetch('http://https://brightpath-zp6i.onrender.com/applications/apply', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
