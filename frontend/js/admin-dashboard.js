@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await axios.get("http://https://brightpath-zp6i.onrender.com/admin/applications", {
+        const response = await axios.get("https://brightpath-zp6i.onrender.com/admin/applications", {
             headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -31,7 +31,7 @@ async function approveApplication(appId) {
     const token = localStorage.getItem("token");
 
     try {
-        await axios.put(`http://https://brightpath-zp6i.onrender.com/admin/applications/${appId}`, {}, {
+        await axios.put(`https://brightpath-zp6i.onrender.com/admin/applications/${appId}`, {}, {
             headers: { Authorization: `Bearer ${token}` }
         });
         alert("Application Approved!");

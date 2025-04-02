@@ -15,7 +15,7 @@ document.getElementById("donationForm").addEventListener("submit", async (e) => 
 
     try {
         const response = await axios.post(
-            "http://https://brightpath-zp6i.onrender.com/user/donations",
+            "https://brightpath-zp6i.onrender.com/user/donations",
             { donorName, email, amount, paymentMethod },
             { headers: { Authorization: `Bearer ${token}` } }
         );

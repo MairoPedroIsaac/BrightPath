@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             try {
-                const response = await fetch("http://https://brightpath-zp6i.onrender.com/auth/register", {
+                const response = await fetch("https://brightpath-zp6i.onrender.com/auth/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ full_name: fullName, email, password})
