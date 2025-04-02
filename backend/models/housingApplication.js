@@ -10,9 +10,13 @@ module.exports = (sequelize) => {
 
     HousingApplication.init(
         {
-            userId: { type: DataTypes.UUID, allowNull: false },
-            houseId: { type: DataTypes.UUID, allowNull: false }, // Updated to match Housing model
-            status: { type: DataTypes.STRING, defaultValue: "pending" },
+            fullName: { type: DataTypes.STRING, allowNull: false }, // New field
+            email: { type: DataTypes.STRING, allowNull: false }, // New field
+            phone: { type: DataTypes.STRING, allowNull: false }, // New field
+            reason: { type: DataTypes.TEXT, allowNull: false }, // New field
+            userId: { type: DataTypes.UUID, allowNull: true }, // Existing field
+            houseId: { type: DataTypes.UUID, allowNull: true }, // Existing field
+            status: { type: DataTypes.STRING, defaultValue: "pending" }, // Existing field
         },
         {
             sequelize,

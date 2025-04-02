@@ -5,6 +5,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const userRoutes = require("./routes/userRoutes");
+const applicationRoutes = require('./routes/applicationRoutes'); // Require the application routes
 const db = require("./models");
 
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/user", userRoutes);
+app.use("/applications", applicationRoutes); // Use the application routes
 
 app.get("/", (req, res) => {
     res.send("BrightPath API is running...");

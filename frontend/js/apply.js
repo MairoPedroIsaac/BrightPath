@@ -1,44 +1,43 @@
-document.getElementById("applyForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+    const applyForm = document.getElementById('applyForm');
+    const successMessage = document.getElementById('successMessage');
 
-    const token = localStorage.getItem("token");
-    if (!token) {
-        alert("You must be logged in to apply.");
-        window.location.href = "auth.html";
-        return;
-    }
+    applyForm.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent the default form submission
 
-    const fullName = document.getElementById("fullName").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const reason = document.getElementById("reason").value;
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const reason = document.getElementById('reason').value;
 
-    try {
-        const response = await fetch("http://localhost:5000/housing", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({ fullName, email, phone, reason })
-        });
+        // Data to send to the backend
+        const applicationData = {
+            fullName: fullName,
+            email: email,
+            phone: phone,
+            reason: reason
+        };
 
-        console.log(response)
+        try {
+            const response = await fetch('http://localhost:5000/applications/apply', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(applicationData)
+            });
 
-        if (response.ok) {
-            alert("Application submitted successfully!");
-            window.location.href = "dashboard.html";
-        } else {
             const data = await response.json();
-            alert("Application Failed: " + (data.error || "Server error"));
-        }
-    } catch (error) {
-        alert("Application Failed: " + error.message);
-    }
-});
 
-// Logout function
-document.getElementById("logout").addEventListener("click", () => {
-    localStorage.removeItem("token");
-    window.location.href = "auth.html";
+            if (response.ok) {
+                successMessage.textContent = data.message; // Display success message
+                applyForm.reset(); // Clear the form
+            } else {
+                successMessage.textContent = 'Application submission failed.';
+            }
+        } catch (error) {
+            console.error('There was an error submitting the form:', error);
+            successMessage.textContent = 'An error occurred. Please try again.';
+        }
+    });
 });
