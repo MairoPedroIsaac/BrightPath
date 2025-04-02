@@ -76,6 +76,10 @@
             }
         }
     });
+
+    // Redirect BrightPath to Home Page
+    document.getElementById('brightPathLink').addEventListener('click', function() {
+        window.location.href = 'index.html';
+    });
     
 })(jQuery);
-

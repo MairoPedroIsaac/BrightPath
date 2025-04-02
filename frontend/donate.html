@@ -1,4 +1,3 @@
-<!-- donate.html - Donation Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,23 +18,25 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="apply.html">Apply</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                    <!-- Updated the logout link with id="logout" -->
+                    <li class="nav-item"><a class="nav-link" href="#" id="logout">Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
+
     <header class="text-center py-5 bg-light">
         <h2>Support Affordable Housing</h2>
         <p>Your donation helps provide sustainable housing for those in need.</p>
     </header>
-    
+
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow p-4">
                     <h4 class="text-center mb-4">Make a Donation</h4>
-                    <form>
+                    <form id="donateForm">
+                        <div id="successMessage" class="text-success text-center"></div>
                         <div class="mb-3">
                             <label for="donorName" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="donorName" required>
@@ -62,12 +63,20 @@
             </div>
         </div>
     </div>
-    
+
     <footer class="bg-primary text-white text-center py-3">
         &copy; 2025 BrightPath. All rights reserved.
     </footer>
-    
+
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Logout functionality
+        document.getElementById("logout").addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            localStorage.removeItem("token"); // Remove the token from localStorage
+            window.location.href = "auth.html"; // Redirect to the login page
+        });
+    </script>
     <script src="js/donate.js"></script>
 </body>
 </html>

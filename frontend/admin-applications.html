@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Applications | BrightPath</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">BrightPath Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="admin-dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="text-center py-5 bg-light mt-5 animate__animated animate__fadeInDown">
+        <h2>Housing Applications</h2>
+        <p>View and manage housing applications submitted by users.</p>
+    </header>
+
+    <!-- Applications Table -->
+    <div class="container my-5 animate__animated animate__fadeInUp">
+        <div class="table-responsive shadow-sm p-3 bg-white rounded">
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="applicationsTable">
+                    <!-- Placeholder content -->
+                    <tr><td colspan="5">No applications available.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center py-3 fixed-bottom">
+        &copy; 2025 BrightPath. Admin Panel.
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/admin-applications.js"></script>
+</body>
+</html>

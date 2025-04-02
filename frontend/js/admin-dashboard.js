@@ -34,7 +34,6 @@ async function approveApplication(appId) {
         await axios.put(`http://localhost:5000/admin/applications/${appId}`, {}, {
             headers: { Authorization: `Bearer ${token}` }
         });
-
         alert("Application Approved!");
         location.reload();
     } catch (error) {

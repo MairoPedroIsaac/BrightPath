@@ -15,6 +15,11 @@
             flex-direction: column;
             height: 100vh;
         }
+        .logo-link {
+            color: #ffffff;
+            font-size: 1.5em;
+            font-weight: 700;
+        }
         .green-bar {
             background-color: #00B98E;
             color: white;
@@ -89,7 +94,11 @@
 
     <!-- Top Green Bar -->
     <div class="green-bar">
-        <div class="green-bar-text">BrightPath</div>
+        <div class="green-bar-text" id="brightPathLink">
+            <a href="/" class="logo-link">
+                BrightPath
+            </a>
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -134,5 +143,7 @@
     </footer>
 
     <script src="js/auth.js"></script> <!-- Ensure this is correctly linked -->
+    <script src="js/main.js"></script>
+
 </body>
 </html>

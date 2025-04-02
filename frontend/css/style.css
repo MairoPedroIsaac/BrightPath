@@ -1,4 +1,4 @@
-/********** Template CSS **********/
+/********** CSS **********/
 :root {
     --primary: #00B98E;
     --secondary: #FF6922;
@@ -476,4 +476,10 @@
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+
+.admin-display-img {
+    height: 400px !important;
+    object-position: "center";
+    object-fit: "cover";
 }

@@ -25,12 +25,12 @@
             </div>
         </div>
     </nav>
-    
+
     <header class="text-center py-5 bg-light">
         <h2>Apply for Affordable Housing</h2>
         <p>Fill out the form to apply for housing assistance.</p>
     </header>
-    
+
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -38,6 +38,7 @@
                     <h4 class="text-center mb-4">Housing Application Form</h4>
                     <!-- Added id="applyForm" to the form tag -->
                     <form id="applyForm">
+                        <div id="successMessage" class="text-success text-center"></div>
                         <div class="mb-3">
                             <label for="fullName" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="fullName" required>
@@ -60,11 +61,11 @@
             </div>
         </div>
     </div>
-    
+
     <footer class="bg-primary text-white text-center py-3">
         &copy; 2025 BrightPath. All rights reserved.
     </footer>
-    
+
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Linking to the updated apply.js -->
     <script src="js/apply.js"></script>
