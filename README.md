@@ -38,7 +38,7 @@ git clone https://github.com/MairoPedroIsaac/BrightPath.git
 - [Backend Setup](backend/README.md)
 
 ## Links
-- **Deployed URL**: [BrightPath Live Site](https://brightpath.example.com)
-- **Video Demo**: [Watch Here](https://youtube.com/example)
-- **GitHub Repository**: [View Code](https://github.com/username/BrightPath)
-- **SRS Document**: [View SRS](https://docs.google.com/example)
+- **Deployed URL**: [BrightPath Live Site](https://bright-path-rho.vercel.app/)
+- **Video Demo**: [Watch Here](https://youtu.be/rJo2uWhk6J8)
+- **GitHub Repository**: [View Code](https://github.com/MairoPedroIsaac/BrightPath)
+- **SRS Document**: [View SRS](https://docs.google.com/document/d/1dFvaWHAgQ2g5cOJSMLwTT5_bmsp_25Q_e5fl3ESMfLY/edit?tab=t.0)
